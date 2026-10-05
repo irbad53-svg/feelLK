@@ -1,12 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>FeelLK - Learn IT Skills</title>
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap 5.3.3 -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -18,23 +20,486 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     >
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+
+        :root {
+            --primary: #198754;
+            --light-green: #e8f5ee;
+            --page-bg: #f7f9f8;
+            --dark-bg: #101614;
+            --dark-card: #18211e;
+        }
+
+        body {
+            background: var(--page-bg);
+            color: #17211e;
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+        }
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            background: #ffffff;
+            border-bottom: 1px solid #edf1ef;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 11px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 21px;
+        }
+
+        .brand-name {
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar .nav-link {
+            font-weight: 600;
+            color: #343a40;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--primary);
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            background:
+                linear-gradient(
+                    135deg,
+                    #e8f7ef,
+                    #ddf2e7
+                );
+
+            border: 1px solid #d1ebdd;
+            border-radius: 25px;
+            padding: 45px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+
+            background: white;
+            color: var(--primary);
+
+            padding: 7px 13px;
+
+            border-radius: 30px;
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: clamp(34px, 5vw, 54px);
+            line-height: 1.05;
+            font-weight: 900;
+            color: #17352a;
+        }
+
+        .hero-text {
+            color: #596660;
+            line-height: 1.7;
+            max-width: 560px;
+        }
+
+        .hero-icon {
+            width: 180px;
+            height: 180px;
+
+            background: rgba(255,255,255,.75);
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: auto;
+        }
+
+        .hero-icon i {
+            font-size: 90px;
+            color: var(--primary);
+        }
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        .search-box {
+            background: white;
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,.045);
+
+            overflow: hidden;
+        }
+
+        .search-box input {
+            border: none;
+            box-shadow: none !important;
+            padding: 17px;
+        }
+
+        .search-icon {
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .filter-btn {
+            background: var(--primary);
+            color: white;
+
+            border: none;
+
+            width: 43px;
+            height: 43px;
+
+            border-radius: 10px;
+
+            margin: 6px;
+        }
+
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .section-link {
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* =====================================================
+           CATEGORY
+        ===================================================== */
+
+        .categories-wrapper {
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .categories-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-card {
+            min-width: 135px;
+
+            background: white;
+
+            border: 1px solid #e7ece9;
+
+            border-radius: 17px;
+
+            padding: 17px 12px;
+
+            text-align: center;
+
+            transition: .25s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+
+            background: var(--light-green);
+
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: auto;
+        }
+
+        .category-icon i {
+            font-size: 23px;
+            color: var(--primary);
+        }
+
+        .category-card img {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+        }
+
+        .category-title {
+            margin-top: 10px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* =====================================================
+           COURSE CARD
+        ===================================================== */
+
+        .course-card {
+            background: white;
+
+            border: none;
+
+            border-radius: 19px;
+
+            overflow: hidden;
+
+            height: 100%;
+
+            box-shadow:
+                0 4px 20px rgba(0,0,0,.045);
+
+            transition: .25s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,.08);
+        }
+
+        .course-image-wrapper {
+            position: relative;
+            padding: 12px;
+            padding-bottom: 0;
+        }
+
+        .course-image {
+            width: 100%;
+            height: 190px;
+
+            object-fit: cover;
+
+            border-radius: 15px;
+        }
+
+        .price-badge {
+            position: absolute;
+
+            top: 22px;
+            right: 22px;
+
+            background: var(--primary);
+            color: white;
+
+            padding: 7px 13px;
+
+            border-radius: 30px;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,.15);
+        }
+
+        .course-body {
+            padding: 17px;
+        }
+
+        .course-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 7px;
+        }
+
+        .course-description {
+            color: #68736f;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            min-height: 40px;
+        }
+
+        .course-info {
+            display: flex;
+            gap: 15px;
+
+            margin-top: 14px;
+            margin-bottom: 15px;
+        }
+
+        .course-info span {
+            font-size: 11px;
+            font-weight: 600;
+
+            color: var(--primary);
+        }
+
+        .course-info .secondary {
+            color: #888;
+        }
+
+        .btn-join {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .btn-join:hover {
+            background: var(--light-green);
+            color: var(--primary);
+        }
+
+        .btn-buy {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+        }
+
+        .btn-buy:hover {
+            background: #157347;
+            color: white;
+        }
+
+        .whatsapp-btn {
+            width: 48px;
+        }
+
+        /* =====================================================
+           FEATURES
+        ===================================================== */
+
+        .feature-card {
+            background: white;
+
+            border: 1px solid #e7ece9;
+
+            border-radius: 16px;
+
+            padding: 25px 15px;
+
+            text-align: center;
+
+            height: 100%;
+        }
+
+        .feature-icon {
+            color: var(--primary);
+            font-size: 30px;
+        }
+
+        .feature-title {
+            font-weight: 800;
+            margin-top: 9px;
+        }
+
+        .feature-text {
+            color: #888;
+            font-size: 11px;
+        }
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: #101614;
+            color: white;
+        }
+
+        .footer-brand {
+            color: #52b788;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 767px) {
+
+            .hero {
+                padding: 28px 22px;
+            }
+
+            .hero-icon {
+                width: 115px;
+                height: 115px;
+            }
+
+            .hero-icon i {
+                font-size: 55px;
+            }
+
+            .course-image {
+                height: 190px;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
 
-<!-- =====================================================
+<!-- =========================================================
      NAVBAR
-===================================================== -->
+========================================================= -->
 
-<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+<nav class="navbar navbar-expand-lg sticky-top">
 
-    <div class="container">
+    <div class="container py-2">
 
-        <a class="navbar-brand fw-bold fs-3" href="index.html">
-            <span class="text-success">Feel</span>LK
+        <a
+            class="navbar-brand d-flex align-items-center gap-2"
+            href="index.html"
+        >
+
+            <div class="brand-icon">
+                <i class="bi bi-mortarboard-fill"></i>
+            </div>
+
+            <span class="brand-name">
+                FeelLK
+            </span>
+
         </a>
+
 
         <button
             class="navbar-toggler"
@@ -45,38 +510,51 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="mainNavbar">
 
-            <ul class="navbar-nav mx-auto gap-lg-3">
+        <div
+            class="collapse navbar-collapse"
+            id="mainNavbar"
+        >
+
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.html">
+                    <a
+                        class="nav-link active"
+                        href="index.html"
+                    >
                         Home
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="mycourses.html">
+                    <a
+                        class="nav-link"
+                        href="mycourses.html"
+                    >
                         My Courses
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="exam.html">
+                    <a
+                        class="nav-link"
+                        href="exam.html"
+                    >
                         Exam
                     </a>
                 </li>
 
-            </ul>
+                <li class="nav-item ms-lg-2">
+                    <a
+                        class="btn btn-success px-4"
+                        href="mycourses.html"
+                    >
+                        My Learning
+                    </a>
+                </li>
 
-            <a
-                href="https://wa.me/252634588486"
-                target="_blank"
-                class="btn btn-success rounded-pill px-4"
-            >
-                <i class="bi bi-whatsapp"></i>
-                WhatsApp
-            </a>
+            </ul>
 
         </div>
 
@@ -85,72 +563,56 @@
 </nav>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
-<section class="hero-section">
+<main>
 
-    <div class="container">
+<div class="container py-4 py-lg-5">
 
-        <div class="row align-items-center g-5">
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero mb-5">
+
+        <div class="row align-items-center">
 
             <div class="col-lg-7">
 
                 <span class="hero-badge">
-                    Learn • Practice • Grow
+                    LEARN WITH FEELLK
                 </span>
 
                 <h1 class="hero-title mt-3">
-                    Learn IT Skills
-                    <span class="text-success">
-                        Anywhere.
-                    </span>
+                    Learn.<br>
+                    Practice. Grow.
                 </h1>
 
-                <p class="hero-text">
+                <p class="hero-text mt-3 mb-4">
+                    Baro xirfado cusub oo kaa caawinaya
+                    waxbarashadaada, shaqadaada iyo mustaqbalkaaga.
                     FeelLK waa goob kuu fududaynaysa inaad barato
-                    casharro la xiriira IT, Business iyo Technology.
-                    Dooro course-ka aad rabto oo bilow waxbarashadaada.
+                    IT skills meel kasta iyo waqti kasta.
                 </p>
 
-                <div class="d-flex flex-wrap gap-3 mt-4">
-
-                    <a
-                        href="#courses"
-                        class="btn btn-success btn-lg px-4"
-                    >
-                        Explore Courses
-                    </a>
-
-                    <a
-                        href="mycourses.html"
-                        class="btn btn-outline-success btn-lg px-4"
-                    >
-                        My Courses
-                    </a>
-
-                </div>
+                <a
+                    href="#courses"
+                    class="btn btn-success btn-lg px-4"
+                >
+                    Explore Courses
+                </a>
 
             </div>
 
 
-            <div class="col-lg-5">
+            <div class="col-lg-5 d-none d-lg-block">
 
-                <div class="hero-learning-card">
+                <div class="hero-icon">
 
-                    <div class="hero-learning-icon">
-                        <i class="bi bi-mortarboard-fill"></i>
-                    </div>
-
-                    <h4 class="fw-bold mt-3">
-                        Start Learning Today
-                    </h4>
-
-                    <p class="text-secondary mb-0">
-                        Baro xirfadaha aad u baahan tahay
-                        adigoo adeegsanaya FeelLK.
-                    </p>
+                    <i class="bi bi-book-half"></i>
 
                 </div>
 
@@ -158,446 +620,1160 @@
 
         </div>
 
+    </section>
+
+
+    <!-- =====================================================
+         SEARCH
+    ====================================================== -->
+
+    <div class="search-box mb-5">
+
+        <div class="d-flex align-items-center">
+
+            <i class="bi bi-search search-icon ms-3"></i>
+
+            <input
+                type="text"
+                id="courseSearch"
+                class="form-control"
+                placeholder="Search courses..."
+            >
+
+            <button
+                class="filter-btn"
+                type="button"
+            >
+                <i class="bi bi-sliders"></i>
+            </button>
+
+        </div>
+
     </div>
 
-</section>
 
+    <!-- =====================================================
+         CATEGORIES
+    ====================================================== -->
 
-<!-- =====================================================
-     CATEGORIES
-===================================================== -->
+    <section class="mb-5">
 
-<section class="categories-section py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
 
-    <div class="container">
-
-        <div class="section-heading text-center">
-
-            <span class="section-label">
-                CATEGORIES
-            </span>
-
-            <h2 class="fw-bold mt-2">
-                Explore Categories
+            <h2 class="section-title mb-0">
+                Categories
             </h2>
 
-            <p class="text-secondary">
-                Dooro qaybta casharrada aad rabto.
-            </p>
+            <a
+                href="#courses"
+                class="section-link"
+            >
+                Explore
+            </a>
 
         </div>
 
 
-        <div class="row g-4 mt-2">
+        <div class="categories-wrapper">
 
-            <!-- Accounting -->
+            <div class="d-flex gap-3 pb-2">
 
-            <div class="col-6 col-lg-3">
 
-                <div class="category-card">
+                <!-- EXCEL -->
 
-                    <div class="category-icon accounting">
-                        <i class="bi bi-calculator-fill"></i>
-                    </div>
+                <a
+                    href="#excel"
+                    class="text-decoration-none text-dark"
+                >
 
-                    <h5 class="fw-bold mt-3">
-                        Accounting
-                    </h5>
+                    <div class="category-card">
 
-                    <p>
-                        Accounting & Finance
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Programming -->
-
-            <div class="col-6 col-lg-3">
-
-                <div class="category-card">
-
-                    <div class="category-icon programming">
-                        <i class="bi bi-code-slash"></i>
-                    </div>
-
-                    <h5 class="fw-bold mt-3">
-                        Programming
-                    </h5>
-
-                    <p>
-                        Coding & Software
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Web Design -->
-
-            <div class="col-6 col-lg-3">
-
-                <div class="category-card">
-
-                    <div class="category-icon webdesign">
-                        <i class="bi bi-globe2"></i>
-                    </div>
-
-                    <h5 class="fw-bold mt-3">
-                        Web Design
-                    </h5>
-
-                    <p>
-                        Websites & UI
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Business -->
-
-            <div class="col-6 col-lg-3">
-
-                <div class="category-card">
-
-                    <div class="category-icon business">
-                        <i class="bi bi-briefcase-fill"></i>
-                    </div>
-
-                    <h5 class="fw-bold mt-3">
-                        Business
-                    </h5>
-
-                    <p>
-                        Business Skills
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     COURSES
-===================================================== -->
-
-<section
-    id="courses"
-    class="courses-section py-5"
->
-
-    <div class="container">
-
-        <div class="row align-items-end mb-4">
-
-            <div class="col-md-8">
-
-                <span class="section-label">
-                    POPULAR COURSES
-                </span>
-
-                <h2 class="fw-bold mt-2">
-                    Choose Your Course
-                </h2>
-
-                <p class="text-secondary mb-0">
-                    Baro xirfado cusub oo aad si practical ah
-                    ugu isticmaali karto shaqadaada.
-                </p>
-
-            </div>
-
-
-            <div class="col-md-4 text-md-end mt-3 mt-md-0">
-
-                <span class="all-course-price">
-                    Courses from <strong>$10</strong>
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="row g-4">
-
-
-            <!-- =================================================
-                 QUICKBOOKS COURSE
-            ================================================== -->
-
-            <div class="col-md-6 col-lg-6">
-
-                <div class="course-card">
-
-                    <!-- IMAGE -->
-
-                    <div class="course-image-wrapper">
-
-                        <img
-                            src="https://www.splandidebiz.com/images/Formation-en-ligne-sur-le-Logiciel-comptable-Quickbooks-en-ligne.png"
-                            alt="QuickBooks Course"
-                            class="course-image"
-                        >
-
-                        <!-- PRICE -->
-
-                        <div class="course-price-badge">
-                            $10
+                        <div class="category-icon">
+                            <i class="bi bi-file-earmark-spreadsheet"></i>
                         </div>
 
-                        <!-- LOCK -->
-
-                        <div class="course-lock-badge">
-                            <i class="bi bi-lock-fill"></i>
-                            Locked
+                        <div class="category-title">
+                            Excel
                         </div>
 
                     </div>
 
+                </a>
 
-                    <!-- CONTENT -->
 
-                    <div class="course-content">
+                <!-- ACCESS -->
 
-                        <div class="course-category">
-                            ACCOUNTING
+                <a
+                    href="#access"
+                    class="text-decoration-none text-dark"
+                >
+
+                    <div class="category-card">
+
+                        <div class="category-icon">
+
+                            <img
+                                src="assets/access.png"
+                                alt="Access"
+                            >
+
                         </div>
 
-                        <h3 class="course-title">
+                        <div class="category-title">
+                            Microsoft Access
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- WINDOWS -->
+
+                <a
+                    href="#windows"
+                    class="text-decoration-none text-dark"
+                >
+
+                    <div class="category-card">
+
+                        <div class="category-icon">
+                            <i class="bi bi-windows"></i>
+                        </div>
+
+                        <div class="category-title">
+                            Windows
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- WORD -->
+
+                <a
+                    href="#word"
+                    class="text-decoration-none text-dark"
+                >
+
+                    <div class="category-card">
+
+                        <div class="category-icon">
+                            <i class="bi bi-file-earmark-word"></i>
+                        </div>
+
+                        <div class="category-title">
+                            Word
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- POWERPOINT -->
+
+                <a
+                    href="#powerpoint"
+                    class="text-decoration-none text-dark"
+                >
+
+                    <div class="category-card">
+
+                        <div class="category-icon">
+                            <i class="bi bi-file-earmark-slides"></i>
+                        </div>
+
+                        <div class="category-title">
+                            PowerPoint
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- QUICKBOOKS -->
+
+                <a
+                    href="#quickbooks"
+                    class="text-decoration-none text-dark"
+                >
+
+                    <div class="category-card">
+
+                        <div class="category-icon">
+                            <i class="bi bi-calculator"></i>
+                        </div>
+
+                        <div class="category-title">
                             QuickBooks
-                        </h3>
-
-                        <p class="course-description">
-                            Baro QuickBooks, company setup,
-                            invoices, expenses, sales, purchases,
-                            reports iyo accounting.
-                        </p>
-
-
-                        <!-- COURSE INFO -->
-
-                        <div class="course-info">
-
-                            <span>
-                                <i class="bi bi-play-circle-fill"></i>
-                                Video Lessons
-                            </span>
-
-                            <span>
-                                <i class="bi bi-patch-question-fill"></i>
-                                Exam
-                            </span>
-
-                        </div>
-
-
-                        <!-- =================================================
-                             THREE OPTIONS
-                        ================================================== -->
-
-                        <div class="course-options">
-
-                            <!-- JOIN -->
-
-                            <button
-                                type="button"
-                                class="course-option join-option"
-                                onclick="openJoinModal('QuickBooks')"
-                            >
-
-                                <i class="bi bi-key-fill"></i>
-
-                                <span>
-                                    <strong>JOIN</strong>
-                                    <small>Use Course ID</small>
-                                </span>
-
-                            </button>
-
-
-                            <!-- PAY -->
-
-                            <button
-                                type="button"
-                                class="course-option pay-option"
-                                onclick="openPayModal('QuickBooks', 10)"
-                            >
-
-                                <i class="bi bi-credit-card-fill"></i>
-
-                                <span>
-                                    <strong>PAY</strong>
-                                    <small>Pay $10</small>
-                                </span>
-
-                            </button>
-
-
-                            <!-- WHATSAPP -->
-
-                            <a
-                                href="https://wa.me/252634588486?text=Salaam%20FeelLK%2C%20waxaan%20rabaa%20QuickBooks%20Course-ka."
-                                target="_blank"
-                                class="course-option whatsapp-option"
-                            >
-
-                                <i class="bi bi-whatsapp"></i>
-
-                                <span>
-                                    <strong>CHAT</strong>
-                                    <small>WhatsApp</small>
-                                </span>
-
-                            </a>
-
                         </div>
 
                     </div>
 
-                </div>
+                </a>
+
+
+                <!-- BOOTSTRAP -->
+
+                <a
+                    href="#bootstrap"
+                    class="text-decoration-none text-dark"
+                >
+
+                    <div class="category-card">
+
+                        <div class="category-icon">
+                            <i class="bi bi-bootstrap"></i>
+                        </div>
+
+                        <div class="category-title">
+                            Bootstrap
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- PHP -->
+
+                <a
+                    href="#php"
+                    class="text-decoration-none text-dark"
+                >
+
+                    <div class="category-card">
+
+                        <div class="category-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+
+                        <div class="category-title">
+                            PHP
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- MYSQL -->
+
+                <a
+                    href="#mysql"
+                    class="text-decoration-none text-dark"
+                >
+
+                    <div class="category-card">
+
+                        <div class="category-icon">
+                            <i class="bi bi-database"></i>
+                        </div>
+
+                        <div class="category-title">
+                            MySQL
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- FLUTTER -->
+
+                <a
+                    href="#flutter"
+                    class="text-decoration-none text-dark"
+                >
+
+                    <div class="category-card">
+
+                        <div class="category-icon">
+                            <i class="bi bi-phone"></i>
+                        </div>
+
+                        <div class="category-title">
+                            Flutter
+                        </div>
+
+                    </div>
+
+                </a>
 
             </div>
 
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         POPULAR COURSES
+    ====================================================== -->
+
+    <section id="courses">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h2 class="section-title mb-0">
+                Popular Courses
+            </h2>
+
+            <span class="section-link">
+                View all
+            </span>
+
+        </div>
+
+
+        <!-- IMPORTANT:
+             3 COLUMNS DESKTOP
+             2 COLUMNS TABLET
+             1 COLUMN MOBILE
+        -->
+
+        <div
+            class="row g-4"
+            id="coursesGrid"
+        >
+
 
             <!-- =================================================
-                 EXCEL COURSE
+                 EXCEL
             ================================================== -->
 
-            <div class="col-md-6 col-lg-6">
+            <div
+                class="col-12 col-md-6 col-lg-4 course-item"
+                id="excel"
+                data-course="Microsoft Excel"
+            >
 
                 <div class="course-card">
-
-                    <!-- IMAGE -->
 
                     <div class="course-image-wrapper">
 
                         <img
-                            src="https://www.ninjaexcel.com/wp-content/uploads/2025/06/capacitacion-en-excel-para-empresas-1024x700.webp"
-                            alt="Microsoft Excel Course"
+                            src="assets/excel.png"
                             class="course-image"
+                            alt="Microsoft Excel"
                         >
 
-                        <!-- PRICE -->
-
-                        <div class="course-price-badge">
-                            $10
-                        </div>
-
-                        <!-- LOCK -->
-
-                        <div class="course-lock-badge">
-                            <i class="bi bi-lock-fill"></i>
-                            Locked
-                        </div>
+                        <span class="price-badge">
+                            $5
+                        </span>
 
                     </div>
 
 
-                    <!-- CONTENT -->
-
-                    <div class="course-content">
-
-                        <div class="course-category">
-                            OFFICE
-                        </div>
+                    <div class="course-body">
 
                         <h3 class="course-title">
                             Microsoft Excel
                         </h3>
 
                         <p class="course-description">
-                            Baro Excel laga bilaabo basics ilaa
-                            formulas, functions, tables, data,
-                            reports iyo practical projects.
+                            Baro Microsoft Excel iyo sida loogu
+                            isticmaalo xisaabaadka, xogta iyo
+                            maamulka ganacsiga.
                         </p>
 
-
-                        <!-- COURSE INFO -->
 
                         <div class="course-info">
 
                             <span>
-                                <i class="bi bi-play-circle-fill"></i>
+                                <i class="bi bi-play-circle"></i>
                                 Video Lessons
                             </span>
 
-                            <span>
-                                <i class="bi bi-patch-question-fill"></i>
-                                Exam
+                            <span class="secondary">
+                                <i class="bi bi-patch-check"></i>
+                                Certificate
                             </span>
 
                         </div>
 
 
-                        <!-- =================================================
-                             THREE OPTIONS
-                        ================================================== -->
-
-                        <div class="course-options">
-
-                            <!-- JOIN -->
+                        <div class="d-flex gap-2">
 
                             <button
-                                type="button"
-                                class="course-option join-option"
-                                onclick="openJoinModal('Excel')"
+                                class="btn btn-join flex-grow-1"
+                                onclick="joinCourse('excel', 'Microsoft Excel', 'EXL-7M4X')"
                             >
-
-                                <i class="bi bi-key-fill"></i>
-
-                                <span>
-                                    <strong>JOIN</strong>
-                                    <small>Use Course ID</small>
-                                </span>
-
+                                JOIN
                             </button>
-
-
-                            <!-- PAY -->
 
                             <button
-                                type="button"
-                                class="course-option pay-option"
-                                onclick="openPayModal('Excel', 10)"
+                                class="btn btn-buy flex-grow-1"
+                                onclick="buyCourse('excel', 'Microsoft Excel', 5)"
                             >
-
-                                <i class="bi bi-credit-card-fill"></i>
-
-                                <span>
-                                    <strong>PAY</strong>
-                                    <small>Pay $10</small>
-                                </span>
-
+                                PAY
                             </button>
-
-
-                            <!-- WHATSAPP -->
 
                             <a
-                                href="https://wa.me/252634588486?text=Salaam%20FeelLK%2C%20waxaan%20rabaa%20Excel%20Course-ka."
+                                href="https://wa.me/252634588486"
                                 target="_blank"
-                                class="course-option whatsapp-option"
+                                class="btn btn-join whatsapp-btn"
                             >
-
                                 <i class="bi bi-whatsapp"></i>
+                            </a>
 
-                                <span>
-                                    <strong>CHAT</strong>
-                                    <small>WhatsApp</small>
-                                </span>
+                        </div>
 
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 WINDOWS
+            ================================================== -->
+
+            <div
+                class="col-12 col-md-6 col-lg-4 course-item"
+                id="windows"
+                data-course="Windows"
+            >
+
+                <div class="course-card">
+
+                    <div class="course-image-wrapper">
+
+                        <img
+                            src="assets/windows.png"
+                            class="course-image"
+                            alt="Windows"
+                        >
+
+                        <span class="price-badge">
+                            $5
+                        </span>
+
+                    </div>
+
+                    <div class="course-body">
+
+                        <h3 class="course-title">
+                            Windows
+                        </h3>
+
+                        <p class="course-description">
+                            Baro Windows, computer basics,
+                            settings, files iyo maamulka computer-ka.
+                        </p>
+
+                        <div class="course-info">
+
+                            <span>
+                                <i class="bi bi-play-circle"></i>
+                                Video Lessons
+                            </span>
+
+                            <span class="secondary">
+                                <i class="bi bi-patch-check"></i>
+                                Certificate
+                            </span>
+
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button
+                                class="btn btn-join flex-grow-1"
+                                onclick="joinCourse('windows', 'Windows', 'WIN-7M4X')"
+                            >
+                                JOIN
+                            </button>
+
+                            <button
+                                class="btn btn-buy flex-grow-1"
+                                onclick="buyCourse('windows', 'Windows', 5)"
+                            >
+                                PAY
+                            </button>
+
+                            <a
+                                href="https://wa.me/252634588486"
+                                target="_blank"
+                                class="btn btn-join whatsapp-btn"
+                            >
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ACCESS
+            ================================================== -->
+
+            <div
+                class="col-12 col-md-6 col-lg-4 course-item"
+                id="access"
+                data-course="Microsoft Access"
+            >
+
+                <div class="course-card">
+
+                    <div class="course-image-wrapper">
+
+                        <img
+                            src="assets/access.png"
+                            class="course-image"
+                            alt="Microsoft Access"
+                        >
+
+                        <span class="price-badge">
+                            $5
+                        </span>
+
+                    </div>
+
+                    <div class="course-body">
+
+                        <h3 class="course-title">
+                            Microsoft Access
+                        </h3>
+
+                        <p class="course-description">
+                            Baro Microsoft Access iyo samaynta
+                            database-yada casriga ah.
+                        </p>
+
+                        <div class="course-info">
+
+                            <span>
+                                <i class="bi bi-play-circle"></i>
+                                Video Lessons
+                            </span>
+
+                            <span class="secondary">
+                                <i class="bi bi-patch-check"></i>
+                                Certificate
+                            </span>
+
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button
+                                class="btn btn-join flex-grow-1"
+                                onclick="joinCourse('access', 'Microsoft Access', 'ACS-8K4M')"
+                            >
+                                JOIN
+                            </button>
+
+                            <button
+                                class="btn btn-buy flex-grow-1"
+                                onclick="buyCourse('access', 'Microsoft Access', 5)"
+                            >
+                                PAY
+                            </button>
+
+                            <a
+                                href="https://wa.me/252634588486"
+                                target="_blank"
+                                class="btn btn-join whatsapp-btn"
+                            >
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 WORD
+            ================================================== -->
+
+            <div
+                class="col-12 col-md-6 col-lg-4 course-item"
+                id="word"
+                data-course="Microsoft Word"
+            >
+
+                <div class="course-card">
+
+                    <div class="course-image-wrapper">
+
+                        <img
+                            src="assets/word.png"
+                            class="course-image"
+                            alt="Microsoft Word"
+                        >
+
+                        <span class="price-badge">
+                            $5
+                        </span>
+
+                    </div>
+
+                    <div class="course-body">
+
+                        <h3 class="course-title">
+                            Microsoft Word
+                        </h3>
+
+                        <p class="course-description">
+                            Baro Microsoft Word iyo samaynta
+                            documents xirfad leh.
+                        </p>
+
+                        <div class="course-info">
+
+                            <span>
+                                <i class="bi bi-play-circle"></i>
+                                Video Lessons
+                            </span>
+
+                            <span class="secondary">
+                                <i class="bi bi-patch-check"></i>
+                                Certificate
+                            </span>
+
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button
+                                class="btn btn-join flex-grow-1"
+                                onclick="joinCourse('word', 'Microsoft Word', 'WRD-7M4X')"
+                            >
+                                JOIN
+                            </button>
+
+                            <button
+                                class="btn btn-buy flex-grow-1"
+                                onclick="buyCourse('word', 'Microsoft Word', 5)"
+                            >
+                                PAY
+                            </button>
+
+                            <a
+                                href="https://wa.me/252634588486"
+                                target="_blank"
+                                class="btn btn-join whatsapp-btn"
+                            >
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 POWERPOINT
+            ================================================== -->
+
+            <div
+                class="col-12 col-md-6 col-lg-4 course-item"
+                id="powerpoint"
+                data-course="PowerPoint"
+            >
+
+                <div class="course-card">
+
+                    <div class="course-image-wrapper">
+
+                        <img
+                            src="assets/pp.png"
+                            class="course-image"
+                            alt="PowerPoint"
+                        >
+
+                        <span class="price-badge">
+                            $5
+                        </span>
+
+                    </div>
+
+                    <div class="course-body">
+
+                        <h3 class="course-title">
+                            PowerPoint
+                        </h3>
+
+                        <p class="course-description">
+                            Baro samaynta presentations qurux
+                            badan oo xirfad leh.
+                        </p>
+
+                        <div class="course-info">
+
+                            <span>
+                                <i class="bi bi-play-circle"></i>
+                                Video Lessons
+                            </span>
+
+                            <span class="secondary">
+                                <i class="bi bi-patch-check"></i>
+                                Certificate
+                            </span>
+
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button
+                                class="btn btn-join flex-grow-1"
+                                onclick="joinCourse('powerpoint', 'PowerPoint', 'PPT-7M4X')"
+                            >
+                                JOIN
+                            </button>
+
+                            <button
+                                class="btn btn-buy flex-grow-1"
+                                onclick="buyCourse('powerpoint', 'PowerPoint', 5)"
+                            >
+                                PAY
+                            </button>
+
+                            <a
+                                href="https://wa.me/252634588486"
+                                target="_blank"
+                                class="btn btn-join whatsapp-btn"
+                            >
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 QUICKBOOKS
+            ================================================== -->
+
+            <div
+                class="col-12 col-md-6 col-lg-4 course-item"
+                id="quickbooks"
+                data-course="QuickBooks"
+            >
+
+                <div class="course-card">
+
+                    <div class="course-image-wrapper">
+
+                        <img
+                            src="assets/quickbook.png"
+                            class="course-image"
+                            alt="QuickBooks"
+                        >
+
+                        <span class="price-badge">
+                            $10
+                        </span>
+
+                    </div>
+
+                    <div class="course-body">
+
+                        <h3 class="course-title">
+                            QuickBooks
+                        </h3>
+
+                        <p class="course-description">
+                            Baro accounting, invoices, expenses,
+                            sales, purchases iyo reports.
+                        </p>
+
+                        <div class="course-info">
+
+                            <span>
+                                <i class="bi bi-play-circle"></i>
+                                Video Lessons
+                            </span>
+
+                            <span class="secondary">
+                                <i class="bi bi-patch-check"></i>
+                                Certificate
+                            </span>
+
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button
+                                class="btn btn-join flex-grow-1"
+                                onclick="joinCourse('quickbooks', 'QuickBooks', 'QBK-7M4X')"
+                            >
+                                JOIN
+                            </button>
+
+                            <button
+                                class="btn btn-buy flex-grow-1"
+                                onclick="buyCourse('quickbooks', 'QuickBooks', 10)"
+                            >
+                                PAY
+                            </button>
+
+                            <a
+                                href="https://wa.me/252634588486"
+                                target="_blank"
+                                class="btn btn-join whatsapp-btn"
+                            >
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BOOTSTRAP
+            ================================================== -->
+
+            <div
+                class="col-12 col-md-6 col-lg-4 course-item"
+                id="bootstrap"
+                data-course="Bootstrap"
+            >
+
+                <div class="course-card">
+
+                    <div class="course-image-wrapper">
+
+                        <img
+                            src="assets/bootstrap.png"
+                            class="course-image"
+                            alt="Bootstrap"
+                        >
+
+                        <span class="price-badge">
+                            $10
+                        </span>
+
+                    </div>
+
+                    <div class="course-body">
+
+                        <h3 class="course-title">
+                            Bootstrap
+                        </h3>
+
+                        <p class="course-description">
+                            Baro Bootstrap iyo sida loo dhiso
+                            websites responsive ah.
+                        </p>
+
+                        <div class="course-info">
+
+                            <span>
+                                <i class="bi bi-play-circle"></i>
+                                Video Lessons
+                            </span>
+
+                            <span class="secondary">
+                                <i class="bi bi-patch-check"></i>
+                                Certificate
+                            </span>
+
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button
+                                class="btn btn-join flex-grow-1"
+                                onclick="joinCourse('bootstrap', 'Bootstrap', 'BST-7M4X')"
+                            >
+                                JOIN
+                            </button>
+
+                            <button
+                                class="btn btn-buy flex-grow-1"
+                                onclick="buyCourse('bootstrap', 'Bootstrap', 10)"
+                            >
+                                PAY
+                            </button>
+
+                            <a
+                                href="https://wa.me/252634588486"
+                                target="_blank"
+                                class="btn btn-join whatsapp-btn"
+                            >
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PHP
+            ================================================== -->
+
+            <div
+                class="col-12 col-md-6 col-lg-4 course-item"
+                id="php"
+                data-course="PHP"
+            >
+
+                <div class="course-card">
+
+                    <div class="course-image-wrapper">
+
+                        <img
+                            src="assets/php.png"
+                            class="course-image"
+                            alt="PHP"
+                        >
+
+                        <span class="price-badge">
+                            $10
+                        </span>
+
+                    </div>
+
+                    <div class="course-body">
+
+                        <h3 class="course-title">
+                            PHP
+                        </h3>
+
+                        <p class="course-description">
+                            Baro PHP programming iyo backend
+                            web development.
+                        </p>
+
+                        <div class="course-info">
+
+                            <span>
+                                <i class="bi bi-play-circle"></i>
+                                Video Lessons
+                            </span>
+
+                            <span class="secondary">
+                                <i class="bi bi-patch-check"></i>
+                                Certificate
+                            </span>
+
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button
+                                class="btn btn-join flex-grow-1"
+                                onclick="joinCourse('php', 'PHP', 'PHP-7M4X')"
+                            >
+                                JOIN
+                            </button>
+
+                            <button
+                                class="btn btn-buy flex-grow-1"
+                                onclick="buyCourse('php', 'PHP', 10)"
+                            >
+                                PAY
+                            </button>
+
+                            <a
+                                href="https://wa.me/252634588486"
+                                target="_blank"
+                                class="btn btn-join whatsapp-btn"
+                            >
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MYSQL
+            ================================================== -->
+
+            <div
+                class="col-12 col-md-6 col-lg-4 course-item"
+                id="mysql"
+                data-course="MySQL"
+            >
+
+                <div class="course-card">
+
+                    <div class="course-image-wrapper">
+
+                        <img
+                            src="assets/mysql.png"
+                            class="course-image"
+                            alt="MySQL"
+                        >
+
+                        <span class="price-badge">
+                            $10
+                        </span>
+
+                    </div>
+
+                    <div class="course-body">
+
+                        <h3 class="course-title">
+                            MySQL
+                        </h3>
+
+                        <p class="course-description">
+                            Baro databases, tables, queries iyo
+                            maamulka MySQL.
+                        </p>
+
+                        <div class="course-info">
+
+                            <span>
+                                <i class="bi bi-play-circle"></i>
+                                Video Lessons
+                            </span>
+
+                            <span class="secondary">
+                                <i class="bi bi-patch-check"></i>
+                                Certificate
+                            </span>
+
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button
+                                class="btn btn-join flex-grow-1"
+                                onclick="joinCourse('mysql', 'MySQL', 'SQL-7M4X')"
+                            >
+                                JOIN
+                            </button>
+
+                            <button
+                                class="btn btn-buy flex-grow-1"
+                                onclick="buyCourse('mysql', 'MySQL', 10)"
+                            >
+                                PAY
+                            </button>
+
+                            <a
+                                href="https://wa.me/252634588486"
+                                target="_blank"
+                                class="btn btn-join whatsapp-btn"
+                            >
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FLUTTER
+            ================================================== -->
+
+            <div
+                class="col-12 col-md-6 col-lg-4 course-item"
+                id="flutter"
+                data-course="Flutter"
+            >
+
+                <div class="course-card">
+
+                    <div class="course-image-wrapper">
+
+                        <img
+                            src="assets/flutter.png"
+                            class="course-image"
+                            alt="Flutter"
+                        >
+
+                        <span class="price-badge">
+                            $10
+                        </span>
+
+                    </div>
+
+                    <div class="course-body">
+
+                        <h3 class="course-title">
+                            Flutter
+                        </h3>
+
+                        <p class="course-description">
+                            Baro Flutter iyo sida loo dhiso
+                            mobile applications casri ah.
+                        </p>
+
+                        <div class="course-info">
+
+                            <span>
+                                <i class="bi bi-play-circle"></i>
+                                Video Lessons
+                            </span>
+
+                            <span class="secondary">
+                                <i class="bi bi-patch-check"></i>
+                                Certificate
+                            </span>
+
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button
+                                class="btn btn-join flex-grow-1"
+                                onclick="joinCourse('flutter', 'Flutter', 'FLT-7M4X')"
+                            >
+                                JOIN
+                            </button>
+
+                            <button
+                                class="btn btn-buy flex-grow-1"
+                                onclick="buyCourse('flutter', 'Flutter', 10)"
+                            >
+                                PAY
+                            </button>
+
+                            <a
+                                href="https://wa.me/252634588486"
+                                target="_blank"
+                                class="btn btn-join whatsapp-btn"
+                            >
+                                <i class="bi bi-whatsapp"></i>
                             </a>
 
                         </div>
@@ -610,14 +1786,175 @@
 
         </div>
 
+    </section>
+
+
+    <!-- =====================================================
+         WHY FEELLK
+    ====================================================== -->
+
+    <section class="mt-5 pt-3">
+
+        <h2 class="section-title mb-4">
+            Why FeelLK?
+        </h2>
+
+        <div class="row g-3">
+
+            <div class="col-12 col-md-4">
+
+                <div class="feature-card">
+
+                    <i class="bi bi-play-circle feature-icon"></i>
+
+                    <div class="feature-title">
+                        Learn
+                    </div>
+
+                    <div class="feature-text">
+                        Casharro fudud oo si fiican loo fahmi karo.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-12 col-md-4">
+
+                <div class="feature-card">
+
+                    <i class="bi bi-check2-square feature-icon"></i>
+
+                    <div class="feature-title">
+                        Practice
+                    </div>
+
+                    <div class="feature-text">
+                        Ku celceli waxa aad baratay.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-12 col-md-4">
+
+                <div class="feature-card">
+
+                    <i class="bi bi-award feature-icon"></i>
+
+                    <div class="feature-title">
+                        Grow
+                    </div>
+
+                    <div class="feature-text">
+                        Xirfad dhis oo mustaqbalkaaga horumari.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="mt-5">
+
+    <div class="container py-5">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="footer-brand">
+                    FeelLK
+                </div>
+
+                <p class="text-white-50 mt-2">
+                    FeelLK - Feel & Look.
+                    Goob bixisa casharo la xiriira IT,
+                    computer iyo technology.
+                </p>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <h6>
+                    Learning
+                </h6>
+
+                <a
+                    href="index.html"
+                    class="d-block text-white-50 text-decoration-none mt-2"
+                >
+                    Courses
+                </a>
+
+                <a
+                    href="mycourses.html"
+                    class="d-block text-white-50 text-decoration-none mt-2"
+                >
+                    My Courses
+                </a>
+
+                <a
+                    href="exam.html"
+                    class="d-block text-white-50 text-decoration-none mt-2"
+                >
+                    Exam
+                </a>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <h6>
+                    Contact
+                </h6>
+
+                <a
+                    href="https://wa.me/252634588486"
+                    target="_blank"
+                    class="d-block text-white-50 text-decoration-none mt-2"
+                >
+                    <i class="bi bi-whatsapp"></i>
+                    WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <hr class="border-secondary">
+
+        <div class="text-center text-white-50 small">
+            © 2026 FeelLK. All Rights Reserved.
+        </div>
+
     </div>
 
-</section>
+</footer>
 
 
-<!-- =====================================================
+<!-- =========================================================
      JOIN MODAL
-===================================================== -->
+========================================================= -->
 
 <div
     class="modal fade"
@@ -627,21 +1964,13 @@
 
     <div class="modal-dialog modal-dialog-centered">
 
-        <div class="modal-content rounded-4 border-0">
+        <div class="modal-content">
 
-            <div class="modal-header border-0 p-4">
+            <div class="modal-header">
 
-                <div>
-
-                    <span class="text-success fw-semibold">
-                        COURSE ACCESS
-                    </span>
-
-                    <h4 class="fw-bold mb-0">
-                        Join Course
-                    </h4>
-
-                </div>
+                <h5 class="modal-title fw-bold">
+                    Join Course
+                </h5>
 
                 <button
                     type="button"
@@ -652,38 +1981,47 @@
             </div>
 
 
-            <div class="modal-body px-4 pb-4">
+            <div class="modal-body">
 
-                <p class="text-secondary">
-                    Geli Course ID-ga aad haysato.
+                <p class="text-muted">
+                    Geli Course ID-ga laguu soo diray.
                 </p>
-
-                <label
-                    for="courseIdInput"
-                    class="form-label fw-semibold"
-                >
-                    Course ID
-                </label>
 
                 <input
                     type="text"
                     id="courseIdInput"
                     class="form-control form-control-lg"
-                    placeholder="Tusaale: EXL-001"
+                    placeholder="EXL-7M4X"
+                    maxlength="12"
                 >
 
                 <div
-                    id="joinMessage"
-                    class="mt-3"
+                    id="joinError"
+                    class="alert alert-danger mt-3 d-none"
                 ></div>
 
+                <div
+                    id="joinSuccess"
+                    class="alert alert-success mt-3 d-none"
+                ></div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
                 <button
-                    type="button"
-                    class="btn btn-success btn-lg w-100 mt-3"
-                    onclick="joinCourse()"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
                 >
-                    <i class="bi bi-unlock-fill"></i>
-                    Join Course
+                    CANCEL
+                </button>
+
+                <button
+                    class="btn btn-success"
+                    onclick="activateCourse()"
+                >
+                    JOIN
                 </button>
 
             </div>
@@ -695,36 +2033,23 @@
 </div>
 
 
-<!-- =====================================================
-     PAY MODAL
-===================================================== -->
+<!-- =========================================================
+     BUY MODAL
+========================================================= -->
 
 <div
     class="modal fade"
-    id="payModal"
+    id="buyModal"
     tabindex="-1"
 >
 
     <div class="modal-dialog modal-dialog-centered">
 
-        <div class="modal-content rounded-4 border-0">
+        <div class="modal-content">
 
-            <div class="modal-header border-0 p-4">
+            <div class="modal-header">
 
-                <div>
-
-                    <span class="text-success fw-semibold">
-                        PAYMENT
-                    </span>
-
-                    <h4
-                        class="fw-bold mb-0"
-                        id="payCourseName"
-                    >
-                        Course
-                    </h4>
-
-                </div>
+                <h5 class="modal-title fw-bold">Course Payment</h5>
 
                 <button
                     type="button"
@@ -735,100 +2060,32 @@
             </div>
 
 
-            <div class="modal-body px-4 pb-4">
+            <div>
+                <div class="modal-body">
+                    <h5 id="buyCourseName" class="fw-bold mb-3"></h5>
 
+                    <div class="d-flex justify-content-between align-items-center rounded border bg-light px-3 py-2 mb-4">
+                        <span>Course price</span>
+                        <strong id="buyCoursePrice" class="text-success fs-5"></strong>
+                    </div>
 
-                <!-- PRICE CARD -->
-
-                <div class="payment-price-card">
-
-                    <span>
-                        Course Price
-                    </span>
-
-                    <strong>
-                        $<span id="payAmount">10</span>
-                    </strong>
-
+                    <div id="paymentDetails" class="border rounded p-3 mt-4 d-none">
+                        <p class="mb-3">To purchase this course, please send the course payment to one of the following numbers:</p>
+                        <dl class="mb-3">
+                            <dt>Telesom</dt>
+                            <dd class="mb-2">0634588486</dd>
+                            <dt>Golis</dt>
+                            <dd class="mb-0">0907270850</dd>
+                        </dl>
+                        <p class="small mb-0">After sending the payment, please contact FeelLK on WhatsApp or wait for payment confirmation. Your Course ID will be provided after payment confirmation.</p>
+                    </div>
                 </div>
 
-
-                <!-- TELESOM -->
-
-                <div class="payment-method">
-
-                    <div class="payment-method-title">
-                        <i class="bi bi-phone-fill"></i>
-                        Telesom
-                    </div>
-
-                    <div class="payment-code">
-                        *883*NUMBERKA*LACAGTA*#
-                    </div>
-
+                <div class="modal-footer">
+                    <button id="continueToPayment" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                        Got it
+                    </button>
                 </div>
-
-
-                <!-- SOMTEL -->
-
-                <div class="payment-method">
-
-                    <div class="payment-method-title">
-                        <i class="bi bi-phone-fill"></i>
-                        Somtel
-                    </div>
-
-                    <div class="payment-code">
-                        *880*NUMBERKA*LACAGTA*#
-                    </div>
-
-                </div>
-
-
-                <!-- PHONE -->
-
-                <label
-                    for="paymentPhone"
-                    class="form-label fw-semibold mt-3"
-                >
-                    Number-ka aad lacagta ka dirtay
-                </label>
-
-                <input
-                    type="tel"
-                    id="paymentPhone"
-                    class="form-control form-control-lg"
-                    placeholder="63xxxxxxx"
-                >
-
-
-                <div
-                    id="paymentMessage"
-                    class="mt-3"
-                ></div>
-
-
-                <button
-                    type="button"
-                    class="btn btn-success btn-lg w-100 mt-3"
-                    onclick="submitPayment()"
-                >
-                    <i class="bi bi-send-fill"></i>
-                    Send Payment
-                </button>
-
-
-                <!-- WHATSAPP -->
-
-                <a
-                    href="https://wa.me/252634588486"
-                    target="_blank"
-                    class="btn btn-outline-success btn-lg w-100 mt-2"
-                >
-                    <i class="bi bi-whatsapp"></i>
-                    Need Help? WhatsApp Us
-                </a>
-
             </div>
 
         </div>
@@ -838,195 +2095,237 @@
 </div>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
 
-<footer class="footer">
-
-    <div class="container">
-
-        <div class="row align-items-center">
-
-            <div class="col-md-6">
-
-                <h4 class="fw-bold mb-1">
-                    <span class="text-success">Feel</span>LK
-                </h4>
-
-                <p class="text-secondary mb-0">
-                    Learn IT Skills. Build Your Future.
-                </p>
-
-            </div>
-
-
-            <div class="col-md-6 text-md-end mt-3 mt-md-0">
-
-                <a
-                    href="https://wa.me/252634588486"
-                    target="_blank"
-                    class="text-success text-decoration-none"
-                >
-
-                    <i class="bi bi-whatsapp"></i>
-
-                    +252 63 4588486
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</footer>
-
-
-<!-- =====================================================
-     BOOTSTRAP
-===================================================== -->
-
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
-
-
-<!-- =====================================================
-     SCRIPT
-===================================================== -->
-
-<script src="script.js"></script>
-
-
+<script src="js/course-ids.js"></script>
 <script>
 
-let selectedCourse = "";
-let selectedPayCourse = "";
-let selectedPayAmount = 10;
+    let selectedCourseId = "";
+    let selectedCourseName = "";
 
 
-// ==========================================
-// JOIN MODAL
-// ==========================================
+    // ========================================================
+    // JOIN COURSE
+    // ========================================================
 
-function openJoinModal(courseName) {
+    function joinCourse(courseId, courseName, exampleId) {
 
-    selectedCourse = courseName;
+        selectedCourseId = courseId;
+        selectedCourseName = courseName;
 
-    document.getElementById("courseIdInput").value = "";
+        document.getElementById("courseIdInput").value = "";
 
-    document.getElementById("joinMessage").innerHTML = "";
+        document.getElementById("courseIdInput").placeholder =
+            exampleId;
 
-    const modal = new bootstrap.Modal(
-        document.getElementById("joinModal")
-    );
+        document.getElementById("joinError")
+            .classList.add("d-none");
 
-    modal.show();
-}
+        document.getElementById("joinSuccess")
+            .classList.add("d-none");
 
+        const modal =
+            new bootstrap.Modal(
+                document.getElementById("joinModal")
+            );
 
-// ==========================================
-// PAY MODAL
-// ==========================================
-
-function openPayModal(courseName, amount) {
-
-    selectedPayCourse = courseName;
-
-    selectedPayAmount = amount;
-
-    document.getElementById("payCourseName").innerText =
-        courseName;
-
-    document.getElementById("payAmount").innerText =
-        amount;
-
-    document.getElementById("paymentPhone").value = "";
-
-    document.getElementById("paymentMessage").innerHTML = "";
-
-    const modal = new bootstrap.Modal(
-        document.getElementById("payModal")
-    );
-
-    modal.show();
-}
-
-
-// ==========================================
-// JOIN
-// ==========================================
-
-function joinCourse() {
-
-    const id = document
-        .getElementById("courseIdInput")
-        .value
-        .trim()
-        .toUpperCase();
-
-    const message =
-        document.getElementById("joinMessage");
-
-
-    if (!id) {
-
-        message.innerHTML = `
-            <div class="alert alert-warning">
-                Fadlan geli Course ID.
-            </div>
-        `;
-
-        return;
+        modal.show();
     }
 
 
-    message.innerHTML = `
-        <div class="alert alert-info">
-            ID-ga <strong>${id}</strong> waa la hubinayaa...
-        </div>
-    `;
-}
+    // ========================================================
+    // ACTIVATE COURSE
+    // ========================================================
+
+    function activateCourse() {
+
+        const input =
+            document.getElementById("courseIdInput");
+
+        const enteredId =
+            input.value.trim().toUpperCase();
 
 
-// ==========================================
-// PAYMENT
-// ==========================================
+        const error =
+            document.getElementById("joinError");
 
-function submitPayment() {
-
-    const phone = document
-        .getElementById("paymentPhone")
-        .value
-        .trim();
-
-    const message =
-        document.getElementById("paymentMessage");
+        const success =
+            document.getElementById("joinSuccess");
 
 
-    if (!phone) {
+        error.classList.add("d-none");
+        success.classList.add("d-none");
 
-        message.innerHTML = `
-            <div class="alert alert-warning">
-                Fadlan geli number-ka aad lacagta ka dirtay.
-            </div>
-        `;
 
-        return;
+        if (!enteredId) {
+
+            error.textContent =
+                "Fadlan geli Course ID.";
+
+            error.classList.remove("d-none");
+
+            return;
+        }
+
+
+        if (!isValidId(selectedCourseId, enteredId)) {
+
+            error.textContent =
+                "Invalid Course ID. Fadlan hubi ID-ga.";
+
+            error.classList.remove("d-none");
+
+            return;
+        }
+
+
+        // Save course locally for now
+        // Later this will connect to the same API/database
+        // used by the FeelLK Flutter app.
+
+        let myCourses =
+            JSON.parse(
+                localStorage.getItem("feelLK_my_courses")
+            ) || [];
+
+
+        const activatedCourses = JSON.parse(
+            localStorage.getItem("feellk_activated_courses") || "[]"
+        );
+
+        const alreadyExists =
+            activatedCourses.includes(selectedCourseId) ||
+            myCourses.some(course => course.courseId === selectedCourseId);
+
+
+        if (alreadyExists) {
+
+            error.textContent =
+                "Course-kan hore ayuu My Courses ugu jiraa.";
+
+            error.classList.remove("d-none");
+
+            return;
+        }
+
+
+        myCourses.push({
+
+            courseId: selectedCourseId,
+
+            title: selectedCourseName,
+
+            accessId: enteredId
+
+        });
+
+
+        localStorage.setItem(
+            "feelLK_my_courses",
+            JSON.stringify(myCourses)
+        );
+
+        if (!activatedCourses.includes(selectedCourseId)) {
+            activatedCourses.push(selectedCourseId);
+        }
+
+        localStorage.setItem(
+            "feellk_activated_courses",
+            JSON.stringify(activatedCourses)
+        );
+
+
+        success.textContent =
+            selectedCourseName +
+            " waa la furay waxaana lagu daray My Courses.";
+
+        success.classList.remove("d-none");
+
+
+        setTimeout(function () {
+
+            window.location.href =
+                "mycourses.html";
+
+        }, 1200);
+
     }
 
 
-    message.innerHTML = `
-        <div class="alert alert-success">
-            Payment-kaaga waa la helay.
-            FeelLK ayaa hubin doona.
-        </div>
-    `;
-}
+    // ========================================================
+    // BUY COURSE
+    // ========================================================
+
+    function buyCourse(courseId, courseName, price) {
+        document.getElementById("buyCourseName").textContent = courseName;
+        document.getElementById("buyCoursePrice").textContent = "$" + price;
+        document.getElementById("paymentDetails").classList.remove("d-none");
+
+        new bootstrap.Modal(document.getElementById("buyModal")).show();
+    }
+
+    // ========================================================
+    // SEARCH
+    // ========================================================
+
+    document
+        .getElementById("courseSearch")
+        .addEventListener(
+            "input",
+            function () {
+
+                const search =
+                    this.value
+                        .toLowerCase()
+                        .trim();
+
+
+                const courses =
+                    document.querySelectorAll(
+                        ".course-item"
+                    );
+
+
+                courses.forEach(
+                    function (course) {
+
+                        const name =
+                            course
+                                .dataset
+                                .course
+                                .toLowerCase();
+
+
+                        if (
+                            name.includes(search)
+                        ) {
+
+                            course.style.display = "";
+
+                        } else {
+
+                            course.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+            }
+        );
 
 </script>
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+></script>
 
 </body>
 </html>
+
